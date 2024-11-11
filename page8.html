@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Code#4</title>
+    <style>
+        /* Center body using flexbox */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            padding-left: 75px;
+            padding-right: 75px;
+            padding-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0; /* Start with opacity 0 for fade-in */
+            animation: fadeIn 1s ease-in-out forwards; /* Fade-in animation */
+        }
+
+        /* Form styling to stack input and button vertically */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input1 {
+            margin-top: 10px;
+            padding: 8px 12px;
+            width: 300px;
+            max-width: 300px;
+            text-align: center;
+        } 
+        
+        .submit1 {
+            margin-top: 20px;
+            padding: 8px 12px;
+            width: 150px;
+            max-width: 300px;
+        }
+
+        /* Keyframes for fade-in effect */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Add onsubmit to call validasi when Enter is pressed -->
+        <form onsubmit="validasi(event)">
+            <input id="input" type="text" placeholder="Enter the code" class="input1">
+            <button type="submit" class="submit1">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        function validasi(event) {
+            event.preventDefault(); // Prevent form from submitting by default
+            const input = document.getElementById("input").value;
+            if(input === "password") {
+                window.location.href = "page9.html";
+            } else {
+                alert("Incorrect password");
+            }
+        }
+    </script>
+</body>
+</html>

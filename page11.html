@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Penutup</title>
+    <style>
+        /* Center body using flexbox */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 75px 30px 75px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        /* Form styling to stack input and button vertically */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styling for the response textarea */
+        .input1, .submit1 {
+            margin-top: 15px;
+            padding: 10px 12px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 30px;  /* Rounded corners */
+            border: 1px solid #ccc; /* Border styling */
+        }
+
+        /* Textarea specific styling */
+        .input1 {
+            resize: none;  /* Prevent resizing */
+            height: 120px; /* Set a fixed height */
+        }
+
+        /* Button styling */
+        .submit1 {
+            margin-top: 10px;
+            background-color: #000000;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+        }
+
+        /* Button hover effect */
+        .submit1:hover {
+            background-color: #000000;
+        }
+
+        /* Improved spacing between elements */
+        label {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: normal;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="responseForm">
+            <p>
+                Hai!<br>
+                maafkan website yang i buat ini masi terlalu kaku, karna i baru belajar WKWKWKWK <br>
+                nanti kalo uda lulus kuliah i akan membuat lagi yang sama buat u lagi, ditunggu ya mer ya <br>
+                Thank you for today, yaaa! Thankyou udah jalan sama i, blablabla
+            </p>
+            <label for="response">Kesan dan Pesan:</label>
+            <textarea id="response" name="response" class="input1" required></textarea><br>
+
+            <button type="submit" class="submit1">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('responseForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+            
+            const response = document.getElementById('response').value;
+            
+            // Replace 'YOUR_BOT_TOKEN' with your Telegram bot token
+            // Replace 'YOUR_TELEGRAM_USER_ID' with your Telegram user ID
+            const botToken = 'YOUR_BOT_TOKEN';
+            const userId = 'YOUR_TELEGRAM_USER_ID';
+            
+            // Prepare the message content
+            const message = `New Response:\n\nResponse: ${response}`;
+            
+            // Send the data to Telegram using Telegram Bot API
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)}`)
+                .then(response => response.json())
+                .then(data => {
+                    alert('Your response has been sent to Telegram!');
+                    document.getElementById('responseForm').reset();
+                })
+                .catch(error => {
+                    alert('Error sending response: ' + error);
+                });
+        });
+    </script>
+</body>
+</html>

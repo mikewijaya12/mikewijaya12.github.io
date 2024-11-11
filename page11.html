@@ -92,9 +92,6 @@
         <form id="responseForm">
             <p>
                 Hai!<br>
-                maafkan website yang i buat ini masi terlalu kaku, karna i baru belajar WKWKWKWK <br>
-                nanti kalo uda lulus kuliah i akan membuat lagi yang sama buat u lagi, ditunggu ya mer ya <br>
-                Thank you for today, yaaa! Thankyou udah jalan sama i, blablabla
             </p>
             <label for="response">Kesan dan Pesan:</label>
             <textarea id="response" name="response" class="input1" required></textarea><br>
@@ -103,31 +100,5 @@
         </form>
     </div>
 
-    <script>
-        document.getElementById('responseForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent form from submitting normally
-            
-            const response = document.getElementById('response').value;
-            
-            // Replace 'YOUR_BOT_TOKEN' with your Telegram bot token
-            // Replace 'YOUR_TELEGRAM_USER_ID' with your Telegram user ID
-            const botToken = 'YOUR_BOT_TOKEN';
-            const userId = 'YOUR_TELEGRAM_USER_ID';
-            
-            // Prepare the message content
-            const message = `New Response:\n\nResponse: ${response}`;
-            
-            // Send the data to Telegram using Telegram Bot API
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)}`)
-                .then(response => response.json())
-                .then(data => {
-                    alert('Your response has been sent to Telegram!');
-                    document.getElementById('responseForm').reset();
-                })
-                .catch(error => {
-                    alert('Error sending response: ' + error);
-                });
-        });
-    </script>
 </body>
 </html>
